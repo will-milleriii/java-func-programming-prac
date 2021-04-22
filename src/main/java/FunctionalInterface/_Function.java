@@ -1,9 +1,12 @@
 package FunctionalInterface;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class _Function {
     public static void main(String[] args) {
+
+        //function takes one argument and produces one result
         int increment = increment(0);
         System.out.println(increment);
 
@@ -15,6 +18,10 @@ public class _Function {
 
         int addMult = addThenMultFunc.apply(2);
         System.out.println(addMult);
+
+        //BiFunction ex takes two arguments and returns one result
+        System.out.println(addThenMultBiFunc.apply(5, 4));
+
     }
 
     //this function is the same as the increment method below
@@ -25,6 +32,10 @@ public class _Function {
 
     //use andThen function to execute multiple functions inline
     static Function<Integer, Integer> addThenMultFunc = incByOneFunc.andThen(multByTen);
+
+    //BiFunction example
+    static BiFunction<Integer, Integer, Integer> addThenMultBiFunc =
+            (numToInc, numToMultBy) -> (numToInc + 1) * numToMultBy;
 
     static int increment(int num){
         return num + 1;
