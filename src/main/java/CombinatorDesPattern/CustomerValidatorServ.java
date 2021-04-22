@@ -16,4 +16,10 @@ public class CustomerValidatorServ {
     public boolean isValidDob(LocalDate dob){
         return Period.between(dob, LocalDate.now()).getYears() > 16;
     }
+
+    public boolean isValidCustomer(Customer customer){
+        return isValidEmail(customer.getEmail()) &&
+                isValidPhoneNum(customer.getPhoneNum()) &&
+                isValidDob(customer.getDob());
+    }
 }
